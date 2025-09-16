@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('posts')) {
-            Schema::create('posts', function (Blueprint $table) {
-                $table->id();
-                $table->string('title');
-                $table->text('content');
-                $table->timestamps();
-            });
-        }
+        Schema::create('competitions', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('competitions');
     }
 };
